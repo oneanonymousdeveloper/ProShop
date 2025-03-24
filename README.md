@@ -1,0 +1,1 @@
+``` This is a full stack web application for a e-commerce platform that utilizez React on frontend and Python-Django framework on backend with Integration of POSTGRESQL Database
