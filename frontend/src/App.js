@@ -1,19 +1,24 @@
-import {Container}  from 'react-bootstrap'
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen';
+import RootLayout from './RootLayout';
+import ProductScreen from './screens/ProductScreen';
+
+const router = createBrowserRouter([{
+  path : '/',
+  element : <RootLayout/>,
+  children:[{
+    path:'/',
+    element: <HomeScreen/>
+  },{
+    path:'/:id',
+    element: <ProductScreen/>
+  }]
+}])
 
 function App() {
   return (
-    <div className="App">
-     <Header/>
-     <main>
-      <Container className='py-3'>
-       <HomeScreen/>
-      </Container>
-     </main>
-     <Footer/>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
