@@ -1,13 +1,22 @@
-import React from "react";
-
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
-import products from "../products";
 import Rating from "../components/Rating";
 
+import axios from "axios";
+
 const ProductScreen = () => {
-  const { id } = useParams();
-  const product = products.find((product) => product._id === id);
+  const {id} = useParams()
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      const { data } = await axios.get(`/products/${id}`);
+      setProduct(data);
+    }
+    fetchProduct();
+  }, [id]);
+
   return (
     <div>
       <Row>
@@ -36,17 +45,29 @@ const ProductScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Price :</Col>
-                  <Col><strong>${product.price}</strong></Col>
+                  <Col>
+                    <strong>${product.price}</strong>
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Availability :</Col>
-                  <Col><strong>{product.countInStock > 0 ? 'In Stock' : 'Not Available'}</strong></Col>
+                  <Col>
+                    <strong>
+                      {product.countInStock > 0 ? "In Stock" : "Not Available"}
+                    </strong>
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button className="btn-block" disabled={product.countInStock === 0} type="button">Add to cart</Button>
+                <Button
+                  className="btn-block"
+                  disabled={product.countInStock === 0}
+                  type="button"
+                >
+                  Add to cart
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
