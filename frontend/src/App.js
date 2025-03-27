@@ -3,6 +3,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen';
 import RootLayout from './RootLayout';
 import ProductScreen from './screens/ProductScreen';
+import CartScreen from './screens/CartScreen';
 
 const router = createBrowserRouter([{
   path : '/',
@@ -13,6 +14,9 @@ const router = createBrowserRouter([{
   },{
     path:'/:id',
     element: <ProductScreen/>
+  },{
+    path:'cart/:id',
+    element: <CartScreen/>
   }]
 }])
 
