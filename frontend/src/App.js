@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import RootLayout from './RootLayout';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const router = createBrowserRouter([{
   path : '/',
@@ -15,8 +16,11 @@ const router = createBrowserRouter([{
     path:'/:id',
     element: <ProductScreen/>
   },{
-    path:'cart/:id',
+    path:'/cart/:id',
     element: <CartScreen/>
+  },{
+    path:'/login',
+    element: <LoginScreen/>
   }]
 }])
 

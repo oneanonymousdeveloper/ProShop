@@ -26,14 +26,14 @@ class UserSerializer(serializers.ModelSerializer):
     
 
 class UserSerializerWithToken(UserSerializer):
-
     token = serializers.SerializerMethodField( read_only = True)
-    model = User
-    fields = ['id', '_id', 'username', 'email', 'name', 'isAdmin', 'token']
+    class Meta:
+        model = User
+        fields = UserSerializer.Meta.fields + ['token'] 
 
     def get_token(self, obj):
        token = RefreshToken.for_user(obj)
-       return str(token)
+       return str(token.access_token)
 
     
 class ProductSerializer(serializers.ModelSerializer):
