@@ -15,7 +15,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
 
   const queryParams = new URLSearchParams(location.search);
-  const redirect = queryParams.get("redirect") || "/";
+  const redirect = queryParams.get("redirect") ? `/${queryParams.get("redirect")}` : "/";
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;

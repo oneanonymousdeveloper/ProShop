@@ -1,6 +1,5 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 
 function CheckoutSteps({ step1, step2, step3, step4 }) {
@@ -27,9 +26,9 @@ function CheckoutSteps({ step1, step2, step3, step4 }) {
       </Nav.Item>
       <Nav.Item>
         {step3 ? (
-          <LinkContainer to="/payment">
+          <Link to="/payment">
             <Nav.Link>Payment</Nav.Link>
-          </LinkContainer>
+          </Link>
         ) : (
           <Nav.Link disabled>Payment</Nav.Link>
         )}
@@ -37,9 +36,9 @@ function CheckoutSteps({ step1, step2, step3, step4 }) {
 
       <Nav.Item>
         {step4 ? (
-          <LinkContainer to="/placeorder">
+          <Link to="/placeorder">
             <Nav.Link>Place Order</Nav.Link>
-          </LinkContainer>
+          </Link>
         ) : (
           <Nav.Link disabled>Place Order</Nav.Link>
         )}
