@@ -14,10 +14,13 @@ import Rating from "../components/Rating";
 import { listProductDetails } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 
 const ProductScreen = () => {
   const navigate = useNavigate();
   const [qty, setQty] = useState(1);
+
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);

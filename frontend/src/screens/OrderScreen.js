@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -217,15 +217,20 @@ function OrderScreen() {
               {!order.isPaid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
-                  <PayPalScriptProvider options={{ "client-id": "AZCkwVjcqQIIEpeGQzQVXdmmFUSsP-MGKOZJmQ2TvD068CCx5Q51OF0s0ZjnSC_YVNcjWS_JVatnogA0" }}>
-                  {!sdkReady ? (
-                    <Loader />
-                  ) : (
-                    <PayPalButtons
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
-                  )}
+                  <PayPalScriptProvider
+                    options={{
+                      "client-id":
+                        "AZCkwVjcqQIIEpeGQzQVXdmmFUSsP-MGKOZJmQ2TvD068CCx5Q51OF0s0ZjnSC_YVNcjWS_JVatnogA0",
+                    }}
+                  >
+                    {!sdkReady ? (
+                      <Loader />
+                    ) : (
+                      <PayPalButtons
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      />
+                    )}
                   </PayPalScriptProvider>
                 </ListGroup.Item>
               )}
