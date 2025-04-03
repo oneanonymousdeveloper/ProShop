@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('base.urls'))
+    path('', include('base.urls.urls')),  # Serves React frontend
     path('products/', include('base.urls.product_urls')),
     path('users/', include('base.urls.user_urls')),
     path('orders/', include('base.urls.order_urls'))
