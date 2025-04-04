@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('base.urls'))
-    path('products/', include('base.urls.product_urls')),
     path('users/', include('base.urls.user_urls')),
     path('orders/', include('base.urls.order_urls')),
+    path('products/', include('base.urls.product_urls')),
     path('', include('base.urls.urls')),  # Serves React frontend
 ]
 
