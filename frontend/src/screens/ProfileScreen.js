@@ -43,7 +43,7 @@ function ProfileScreen() {
         setEmail(user.email);
       }
     }
-  }, [dispatch, navigate, userInfo, success]);
+  }, [dispatch, navigate, userInfo, success, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();

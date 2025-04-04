@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import environ
 from pathlib import Path
-import dj_database_url
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,10 +135,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         }
 #     }
 # else:
+
+env = environ.Env()
+environ.Env.read_env()
+
 DATABASES = {
-'default': dj_database_url.config(
-conn_max_age=600
-)
+    'default': env.db(default="sqlite:///db.sqlite3")
 }
 
 # Password validation
@@ -196,5 +198,9 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # For local testing
+    "https://mysite-d3dc.onrender.com",  # Render frontend URL
+]
 
