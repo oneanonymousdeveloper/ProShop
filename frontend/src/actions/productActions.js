@@ -28,7 +28,7 @@ import axios from "axios";
 export const listProducts = (keyword='', page = 1) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get(`http://127.0.0.1:8000/products?keyword=${keyword}&page=${page}`);
+    const { data } = await axios.get(`/products?keyword=${keyword}&page=${page}`);
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
